@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.4.dtd">
+<workflow-forms>
+  <workflow-form task="submit">
+    <button name="submit" label="Submit" />
+  </workflow-form>
+</workflow-forms>

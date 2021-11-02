@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="codeReservation">
+
+
+	<start-state name="start-state1">
+		<transition to="codeVerification" name="to verify">
+			<action class="com.openkm.workflow.action.ShowCodeToControl"></action>
+		</transition>
+		<event type="before-signal">
+			<action class="com.openkm.workflow.action.AuthorInjector"></action>
+		</event>
+	</start-state>
+
+
+	<task-node name="codeVerification">
+		<task name="Code verification">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="codeCorrection" name="correct"></transition>
+		<transition to="codeRegistration" name="register"></transition>
+	</task-node>
+
+	<task-node name="codeCorrection">
+		<transition to="codeRegistration" name="registerAfterCorrection"></transition>
+	</task-node>
+
+	<node name="codeRegistration">
+		<action name="RegisterCode" class="com.openkm.workflow.action.RegisterCode"></action>
+		<transition to="initialDownload" name="to initial download"></transition>
+	</node>
+
+	<task-node name="initialDownload">
+		<task name="Initial Download">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="uploadForReview" name="to upload for review"></transition>
+	</task-node>
+
+	<task-node name="uploadForReview">
+		<task name="upload for review">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="reviewerDownload" name="to reviewer download">
+			<action name="update metadata" class="com.openkm.workflow.action.UpdateForReview"></action>
+		</transition>
+	</task-node>
+
+	<task-node name="reviewerDownload">
+		<task name="reviewer download">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="ReviewerDecision" name="to reviewer decision">
+			<action class="com.openkm.workflow.action.ReviewerDownload"></action>
+		</transition>
+	</task-node>
+
+	<task-node name="approverDownload">
+		<task name="approver download">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="ApproverDecision" name="to approver decision">
+			<action class="com.openkm.workflow.action.ApproverDownload"></action>
+		</transition>
+	</task-node>
+
+	<task-node name="downloadWithNotes">
+		<task name="download with notes">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="uploadForReview" name="to upload for review">
+			<action name="modify document" class="com.openkm.workflow.action.TakeFeedbackIntoAccount"></action>
+		</transition>
+	</task-node>
+
+	<task-node name="ApproverDecision">
+		<task name="approver decision">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="downloadWithNotes" name="todownloadWithNotes">
+			<action class="com.openkm.workflow.action.ApproverFeedback"></action>
+		</transition>
+		<transition to="signAndLock" name="to signAndLock">
+			<action class="com.openkm.workflow.action.PrepareForSignAndLock"></action>
+		</transition>
+	</task-node>
+
+	<task-node name="signAndLock">
+		<transition to="readyForIssuing" name="to readyForIssuing"></transition>
+	</task-node>
+
+	<node name="readyForIssuing">
+		<transition to="end-state1"></transition>
+	</node>
+
+	<task-node name="ReviewerDecision">
+		<task name="reviewer decision">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="approverDownload" name='to approver download'>
+			<action class="com.openkm.workflow.action.UpdateForApproval"></action>
+		</transition>
+		<transition to="downloadWithNotes" name="to downloadWithNotes">
+			<action class="com.openkm.workflow.action.ReviewerFeedback"></action>
+		</transition>
+	</task-node>
+
+
+	<end-state name="end-state1"></end-state>
+
+
+</process-definition>

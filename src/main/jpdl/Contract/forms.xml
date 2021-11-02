@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+
+	<workflow-form task="run_config">
+		<select label="Project" name="okp:contract.pro_tiagram" type="simple"
+			table="pro_tiagram"
+			optionsQuery="select $pro_tiagram_id, $pro_tiagram_name from DatabaseMetadataValue dmv where dmv.table='pro_tiagram' order by $pro_tiagram_id">
+			<validator type="req" />
+		</select>
+		<select label="Document Type" name="okp:contract.type" type="simple">
+			<option label="Contract" value="CNT" />
+			<option label="Amendment" value="AMT" />
+			<option label="Annex" value="ANX" />
+			<validator type="req" />
+		</select>
+
+	</workflow-form>
+
+	<workflow-form task="Upload Contract">
+		<separator
+			label="Subproject Details (Optional, if contract related to a subproject - Example: PXXX-YYY)"
+			name="okp:sep" />
+		<input name="okp:contract.subproject" label="Subproject"></input>
+		<separator name="Contract Amount" label="Amount" />
+		<input name="okp:contract.amount" label="Amount (VAT Excluded)">
+			<validator type="regexp" parameter="^[1-9]\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		<input name="okp:contract.vat" label="VAT">
+			<validator type="regexp" parameter="^[0-9]\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		<input name="okp:contract.amount.vat" label="Contract Total Amount (VAT Included)">
+			<validator type="regexp" parameter="^[1-9]\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		<select label="Currency" name="okp:contract.currency" type="simple">
+			<option label="Uzbek Sums" value="UZS" />
+			<option label="US Dollars" value="USD" />
+			<option label="Euros" value="EU" />
+			<option label="Turkish Liras" value="TRY" />
+			<validator type="req" />
+		</select>
+		<textarea name="okp:description" label="Description" width="240px"
+			height="70px" />
+		<upload name="uploadContract" label="Upload Contract" type="create"
+			data="updData">
+			<validator type="req" />
+		</upload>
+
+		<button transition="to registerMetadata" name="to registerMetadata"
+			label="Save and Close" />
+		<button transition="to registerWithRepeating" name="to registerWithRepeating"
+			label="Save and Repeat" />
+		<button transition="to end" name="to end" label="Close" style="no"
+			validate="false" />
+
+	</workflow-form>
+
+	<workflow-form task="Upload Contract Amendment">
+		<textarea name="contracts" label="Contracts List" data="contractList"
+			width="200px" readonly="true"></textarea>
+		<input name="contract.number" width="200px"
+			label="Please, pick a contract from list above to link it to your amendment">
+			<validator type="req" />
+		</input>
+		<textarea name="okp:description" label="Amendment Description">
+			<validator type="req" />
+		</textarea>
+		<upload name="uploadContract" label="Upload Contract" type="create"
+			data="updData">
+			<validator type="req" />
+		</upload>
+
+		<button transition="to registerMetadata" name="to registerMetadata"
+			label="Save and Close" />
+		<button transition="to registerWithRepeating" name="to registerWithRepeating"
+			label="Save and Repeat" />
+		<button transition="to end" name="to end" label="Close" style="no"
+			validate="false" />
+
+	</workflow-form>
+
+	<workflow-form task="Upload Contract Annex">
+		<textarea name="contracts" label="Contracts List" data="contractList"
+			width="200px" />
+		<input name="contract.number" width="200px"
+			label="Please, pick a contract from list above to link it to your annex">
+			<validator type="req" />
+		</input>
+		<textarea name="okp:description" label="Annex Description" />
+		<upload name="uploadContract" label="Upload Contract" type="create"
+			data="updData">
+			<validator type="req" />
+		</upload>
+
+		<button transition="to registerMetadata" name="to registerMetadata"
+			label="Save and Close" />
+		<button transition="to registerWithRepeating" name="to registerWithRepeating"
+			label="Save and Repeat" />
+		<button transition="to end" name="to end" label="Close" style="no"
+			validate="false" />
+
+	</workflow-form>
+
+</workflow-forms>

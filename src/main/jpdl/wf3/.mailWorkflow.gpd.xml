@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="mailWorkflow" width="1152" height="620">
+  <node name="start-state" x="185" y="26" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="mail-node" x="191" y="120" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="node" x="41" y="121" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state" x="191" y="219" width="132" height="36"/>
+  <deployment graphicalInfoFile="/workflows/src/main/jpdl/wf3/.mailWorkflow.gpd.xml" imageFile="/workflows/src/main/jpdl/wf3/mailWorkflow.jpg" serverName="localhost" serverPort="8080" serverDeployer="/OpenKM/workflow-register">
+    <classesAndResources>
+      <element type="java" value="/workflows/src/main/java/com/openkm/workflow/action/MailAction.java"/>
+    </classesAndResources>
+  </deployment>
+</root-container>

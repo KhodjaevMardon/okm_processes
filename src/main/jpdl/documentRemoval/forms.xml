@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+	<workflow-form task="DocUUID Verification">
+		<input label="Document's UUID" name="Doc_UUID" >
+			<validator type = "req" />
+		</input>
+	</workflow-form>
+</workflow-forms>

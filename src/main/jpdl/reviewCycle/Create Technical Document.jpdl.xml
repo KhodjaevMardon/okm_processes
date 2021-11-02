@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="Create Technical Document">
+
+
+	<start-state name="start-state1">
+		<transition to="verifyDocument" name="to verify"></transition>
+	</start-state>
+
+
+	<task-node name="verifyDocument">
+		<transition to="end" name="to end"></transition>
+		<transition to="codeRegistration" name="continue"></transition>
+	</task-node>
+
+	<node name="codeRegistration">
+		<transition to="initialDownload" name="to initial download"></transition>
+	</node>
+
+	<task-node name="initialDownload">
+		<transition to="uploadForReview" name="to upload for review"></transition>
+	</task-node>
+
+	<task-node name="uploadForReview">
+		<transition to="check checkout author" name="to check checkout"></transition>
+	</task-node>
+
+	<task-node name="check checkout author">
+		<transition to="uploadForReview" name="to upload for review"></transition>
+		<transition to="reviewerDownload" name="to reviewerDownload"></transition>
+	</task-node>
+
+	<task-node name="reviewerDownload">
+		<transition to="reviewerDecision"></transition>
+	</task-node>
+
+	<task-node name="reviewerDecision">
+		<transition to="decision1" name="to decision1"></transition>
+		<transition to="approverDownload" name="to approverDownload"></transition>
+	</task-node>
+
+	<decision name="decision1">
+		<transition to="downloadWithNotes" name="to downloadWithNotes"></transition>
+		<transition to="reviewerDecision" name="to reviewerDecision"></transition>
+	</decision>
+
+	<task-node name="downloadWithNotes">
+		<transition to="uploadForReview"></transition>
+	</task-node>
+
+	<task-node name="approverDownload">
+		<transition to="ApproverDecision" name="to approver decision"></transition>
+	</task-node>
+
+	<task-node name="ApproverDecision">
+		<transition to="decision2" name="to decision2"></transition>
+		<transition to="singAndLock" name="to singAndLockWithTr"></transition>
+		<transition to="singAndLock" name="to singAndLock"></transition>
+	</task-node>
+
+	<decision name="decision2">
+		<transition to="ApproverDecision" name="to ApproverDecision"></transition>
+		<transition to="downloadWithNotes" name="to downloadWithNotes"></transition>
+	</decision>
+
+	<task-node name="singAndLock">
+		<transition to="readyForIssuing" name="to readyForIssuing"></transition>
+	</task-node>
+
+	<node name="readyForIssuing">
+		<transition to="decision3"></transition>
+	</node>
+
+	<decision name="decision3">
+		<transition to="TranslationPart" name="to TranslationPart"></transition>
+		<transition to="end-state1" name="finish"></transition>
+	</decision>
+
+	<task-node name="TranslationPart">
+		<transition to="uploadTranslatedVersion" name="goToTranslate"></transition>
+	</task-node>
+
+	<node name="uploadTranslatedVersion">
+		<transition to="Translated Version"></transition>
+	</node>
+
+	<task-node name="Translated Version">
+		<transition to="Second Document" name="SecondDocument"></transition>
+	</task-node>
+
+	<node name="Second Document">
+		<transition to="end-state1"></transition>
+	</node>
+
+
+	<end-state name="end"></end-state>
+
+	<end-state name="end-state1"></end-state>
+
+
+</process-definition>

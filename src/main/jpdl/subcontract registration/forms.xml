@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+
+	<workflow-form task="run_config">
+
+		<select label="Project" name="okp:subcontract.pro_tiagram"
+			type="simple" table="pro_tiagram"
+			optionsQuery="select $pro_tiagram_id, $pro_tiagram_name from DatabaseMetadataValue dmv where dmv.table='pro_tiagram' order by $pro_tiagram_id">
+			<validator type="req" />
+		</select>
+
+		<select label="Subcontractor's name" name="okp:subcontract.subcontractor.name"
+			type="simple" table="subcontractors"
+			optionsQuery="SELECT $subcontractor_name ,$subcontractor_name FROM DatabaseMetadataValue dmv where dmv.table='subcontractors' order by $subcontractor_name">
+			<validator type="req" />
+		</select>
+
+		<select label="Document Type" name="okp:subcontract.type" type="simple">
+			<option label="Subcontract" value="CNT" />
+			<option label="Amendment" value="AMT" />
+			<option label="Annex" value="ANX" />
+			<validator type="req" />
+		</select>
+
+	</workflow-form>
+
+	<workflow-form task="Upload Subcontract">
+		<separator
+			label="Subproject Details (Optional, if subcontract related to a subproject - Example: PXXX-YYY)"
+			name="okp:sep" />
+		<input name="okp:subcontract.subproject" label="Subproject" />
+		<separator name="Subcontract Amount" label="amount" />
+		<input name="okp:subcontract.amount" label="Amount (VAT Excluded)">
+			<validator type="regexp" parameter="^[1-9]\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		<input name="okp:subcontract.vat" label="VAT">
+			<validator type="regexp" parameter="^[0-9]\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		<input name="okp:subcontract.amount.vat" label="Subcontract Total Amount (VAT Included)">
+			<validator type="regexp" parameter="^[1-9]\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		<select label="Currency" name="okp:subcontract.currency" type="simple">
+			<option label="Uzbek Sums" value="UZS" />
+			<option label="US Dollars" value="USD" />
+			<option label="Euros" value="EU" />
+			<option label="Turkish Liras" value="TRY" />
+			<validator type="req" />
+		</select>
+
+		<textarea name="okp:description" label="Description" width="240px"
+			height="70px" />
+		<upload name="uploadSubcontract" label="Upload Subcontract"
+			type="create" data="updData">
+			<validator type="req" />
+		</upload>
+
+		<button transition="to register Metadata" name="to register Metadata"
+			label="Save and Close" />
+		<button transition="to register with repeating" name="to register with repeating"
+			label="Save and Repeat" />
+		<button transition="to end" name="to end" label="Close" style="no"
+			validate="false" />
+
+	</workflow-form>
+
+	<workflow-form task="Upload Subcontract Amendment">
+		<textarea name="subcontracts" label="Subcontracts list" data="subcontractList"
+			width="200px" readonly="true"/>
+		<input name="subcontract.number" width="200px"
+			label="Please, pick a subcontract from list above to link it to your amendment">
+			<validator type="req" />
+		</input>
+		<textarea name="okp:description" label="Amendment Description" />
+		<upload name="uploadSubcontract" label="Upload Subcontract"
+			type="create" data="updData">
+			<validator type="req" />
+		</upload>
+
+		<button transition="to register Metadata" name="to register Metadata"
+			label="Save and Close" />
+		<button transition="to register with repeating" name="to register with repeating"
+			label="Save and Repeat" />
+		<button transition="to end" name="to end" label="Close" style="no"
+			validate="false" />
+
+	</workflow-form>
+
+	<workflow-form task="Upload Subcontract Annex">
+		<textarea name="subcontracts" label="Subcontracts list" data="subcontractList"
+			width="200px" readonly="true" />
+		<input name="subcontract.number" width="200px"
+			label="Please, pick a subcontract from list above to link it to your annex">
+			<validator type="req" />
+		</input>
+		<textarea name="okp:description" label="Annex Description" />
+		<upload name="uploadSubcontract" label="Upload Subcontract"
+			type="create" data="updData">
+			<validator type="req" />
+		</upload>
+
+		<button transition="to register Metadata" name="to register Metadata"
+			label="Save and Close" />
+		<button transition="to register with repeating" name="to register with repeating"
+			label="Save and Repeat" />
+		<button transition="to end" name="to end" label="Close" style="no"
+			validate="false" />
+
+	</workflow-form>
+
+</workflow-forms>

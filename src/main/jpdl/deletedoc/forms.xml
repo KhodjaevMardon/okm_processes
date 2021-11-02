@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+	<workflow-form task="run_config">
+		<input label="Document's UUID" name="Doc_UUID" type="text">
+			<validator type="req" />
+		</input>
+		<input label="Field name (in execContext)(default:'docUUID')" name="fieldName" type="text">
+			<validator type="req" />
+		</input>
+	</workflow-form>
+
+	<workflow-form task="Document Removal - Details">
+		<textarea label="" data="docInfo" name="docInfo" readonly="true"
+			width="600px" height="200px" />
+		<button label="Finish" transition="to end" name="to end" />
+	</workflow-form>
+
+</workflow-forms>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition 
+  xmlns="urn:jbpm.org:jpdl-3.2"
+  name="simple">
+   <start-state name="start">
+      <transition name="to_state" to="state1">
+      		<action></action>
+      </transition>
+   </start-state>
+   <node name="node1">
+		<transition to="end" name="to_end">
+			<action></action>
+		</transition>
+	</node>
+
+	<state name="state1">
+		<transition to="node1"></transition>
+	</state>
+   <end-state name="end"></end-state>
+</process-definition>

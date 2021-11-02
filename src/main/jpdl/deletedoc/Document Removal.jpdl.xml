@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="Document Removal">
+
+
+	<start-state name="start-state1">
+		<transition to="check db"></transition>
+		<event type="before-signal">
+			<action class="com.openkm.workflow.action.AuthorInjection"></action>
+		</event>
+	</start-state>
+
+
+	<node name="check db">
+		<action class="com.openkm.workflow.deletedoc.CheckDB"></action>
+		<transition to="check pi"></transition>
+	</node>
+
+	<node name="check fs">
+		<action class="com.openkm.workflow.deletedoc.CheckFS"></action>
+		<transition to="prepare details to show"></transition>
+	</node>
+
+	<node name="check pi">
+		<action class="com.openkm.workflow.deletedoc.CheckPI"></action>
+		<transition to="check fs"></transition>
+	</node>
+
+	<task-node name="Document Removal - Details">
+		<task>
+			<assignment class="com.openkm.workflow.action.AuthorAssignment"></assignment>
+		</task>
+		<transition to="v5.2.3 - test" name="to end"></transition>
+	</task-node>
+
+	<node name="prepare details to show">
+		<action class="com.openkm.workflow.deletedoc.PrepareDetailsToShow"></action>
+		<transition to="Document Removal - Details"></transition>
+	</node>
+
+
+	<end-state name="v5.2.3 - test"></end-state>
+
+
+</process-definition>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+
+	<workflow-form task="run_config">
+		<select label="Project" name="okp:invoice.pro_tiagram" type="simple"
+			table="pro_tiagram"
+			optionsQuery="select $pro_tiagram_id, $pro_tiagram_name from DatabaseMetadataValue dmv where dmv.table='pro_tiagram' order by $pro_tiagram_id">
+			<validator type="req" />
+		</select>
+
+		<select label="Invoice Association" name="okp:invoice.association">
+			<option label="Contract" value="Contract" />
+			<option label="Subcontract" value="Subcontract" />
+			<validator type="req" />
+		</select>
+
+		<select label="Subcontractor's name (if needed)" name="okp:invoice.subcontractor.name"
+			type="simple" table="subcontractors"
+			optionsQuery="SELECT $subcontractor_name ,$subcontractor_name FROM DatabaseMetadataValue dmv where dmv.table='subcontractors' order by $subcontractor_name">
+		</select>
+
+		<input name="okp:invoice.document.name" label="Subcontract/Contract name"
+			type="text">
+			<validator type="req" />
+		</input>
+
+	</workflow-form>
+
+
+	<workflow-form
+		task="Invoice Registration - Submit Invoice details and upload the Invoice">
+
+		<textarea label="Invoice Classification" name="okp:invoice.classification"
+			width="400px" readonly="false" />
+
+		<input label="Payment Due Date" name="okp:invoice.payment.date"
+			type="date" readonly="false">
+			<validator type="req" />
+		</input>
+
+		<separator label="Status details" name="okp:invoice.status.sep" />
+		
+		<select label="Status" name="okp:invoice.status" readonly="true">
+			<option label="Released" value="Released" selected="true" />
+			<option label="Rejected" value="Rejected" />
+			<option label="Approved" value="Approved" />
+			<option label="Partially paid" value="Partially paid" />
+			<option label="Fully paid" value="Fully paid" />
+			<validator type="req" />
+		</select>
+		
+		<textarea label="Status description" name="okp:invoice.status.comment"
+			readonly="false" width="400px" />
+
+		<separator label="Amount" name="okp:invoice.separator3" />
+		
+		<select label="Currency" name="okp:invoice.currency" type="simple">
+			<option label="Uzbek Sums" value="UZS" />
+			<option label="US Dollars" value="USD" />
+			<option label="Euros" value="EU" />
+			<option label="Turkish Liras" value="TRY" />
+			<validator type="req" />
+		</select>
+		
+		<input label="Invoice Amount (VAT Excluded)" name="okp:invoice.amount"
+			type="text" readonly="false">
+			<validator type="regexp" parameter="^\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		
+		<input label="VAT" name="okp:invoice.vat" type="text" readonly="false">
+			<validator type="regexp" parameter="^\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+		
+		<input label="Total Invoice Amount (VAT Included)" name="okp:invoice.amount.total"
+			type="text" readonly="false">
+			<validator type="regexp" parameter="^\d*(\.\d+)?$" />
+			<validator type="req" />
+		</input>
+
+		<upload name="okp:invoice.uploadInvoice" label="Upload Invoice"
+			type="create" data="updData">
+			<validator type="req" />
+		</upload>
+
+		<button label="Proceed" name="proceed" transition="to node1" />
+		<button label="Cancel and Close" name="close" transition="to end"
+			style="no" validate="false" />
+	</workflow-form>
+
+</workflow-forms>

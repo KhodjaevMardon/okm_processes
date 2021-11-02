@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="Document Removal" width="1086" height="614">
+  <node name="start-state1" x="113" y="89" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Database check" x="81" y="275" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="File system check" x="736" y="269" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Process Instance check" x="384" y="277" width="172" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="IsEverythingOkay check" x="375" y="406" width="186" height="36">
+    <edge>
+      <label x="-54" y="-11"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Removal process" x="404" y="504" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="DocUUID Verification" x="385" y="90" width="160" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state1" x="407" y="577" width="132" height="36"/>
+  <node name="end" x="710" y="452" width="132" height="36"/>
+  <node name="fork1" x="247" y="167" width="442" height="24">
+    <edge>
+      <label x="-85" y="6"/>
+    </edge>
+    <edge>
+      <label x="-73" y="-1"/>
+    </edge>
+    <edge>
+      <label x="-11" y="1"/>
+    </edge>
+  </node>
+  <node name="join1" x="226" y="348" width="484" height="24">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <deployment graphicalInfoFile="/workflow-course/src/main/jpdl/documentRemoval/.Document Removal.gpd.xml" imageFile="/workflow-course/src/main/jpdl/documentRemoval/Document Removal.jpg" serverName="localhost" serverPort="8080" serverDeployer="/jbpm-console/upload">
+    <classesAndResources>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/documentRemoval/IsEverythingOkayCheck.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/documentRemoval/RemovalProcess.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/documentRemoval/FileSystemCheck.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/documentRemoval/DatabaseCheck.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/documentRemoval/ProcessInstanceCheck.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/documentRemoval/AuthorInjection.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/documentRemoval/AuthorAssignment.java"/>
+    </classesAndResources>
+    <additionalFiles>
+      <element value="/workflow-course/src/main/jpdl/documentRemoval/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

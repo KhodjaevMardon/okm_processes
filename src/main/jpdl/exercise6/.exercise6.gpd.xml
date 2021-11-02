@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="exercise6" width="1152" height="620">
+  <node name="start-state1" x="284" y="43" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="decision1" x="283" y="248" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-48" h1="-45" w2="-47" h2="55"/>
+    </edge>
+  </node>
+  <node name="task1" x="282" y="148" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="49" h1="53" w2="48" h2="-47"/>
+    </edge>
+  </node>
+  <node name="end-state1" x="286" y="384" width="132" height="36"/>
+  <deployment graphicalInfoFile="/workflows/src/main/jpdl/exercise6/.exercise6.gpd.xml" imageFile="/workflows/src/main/jpdl/exercise6/exercise6.jpg" serverName="localhost" serverPort="8080" serverDeployer="/OpenKM/workflow-register">
+    <classesAndResources>
+      <element type="java" value="/workflows/src/main/java/com/openkm/workflow/exercise6/Decision.java"/>
+    </classesAndResources>
+    <additionalFiles>
+      <element value="/workflows/src/main/jpdl/exercise6/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

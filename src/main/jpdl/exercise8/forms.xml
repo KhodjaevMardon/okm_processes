@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.4.dtd">
+<workflow-forms>
+  <workflow-form task="creator">
+    <button name="review" label="Review" transition="review" style="yes" />
+    <button name="cancel" label="Cancel" transition="cancel" style="no" />
+  </workflow-form>
+  <workflow-form task="reviewer">
+    <button name="accept" label="Accept" transition="accept" style="yes" />
+    <button name="cancel" label="Cancel" transition="cancel" style="no" />
+  </workflow-form>
+  <workflow-form task="approver">
+    <button name="accept" label="Accept" transition="accept" style="yes" />
+    <button name="cancel" label="Cancel" transition="cancel" style="no" />
+  </workflow-form>
+</workflow-forms>

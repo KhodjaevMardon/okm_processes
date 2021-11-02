@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="exercise8">
+
+	<start-state name="start-state">
+		<transition to="metadata_created"></transition>
+	</start-state>
+
+	<task-node name="creator">
+		<task name="creator">
+			<assignment pooled-actors="creator"></assignment>
+		</task>
+		<transition to="reviewer" name="review"></transition>
+		<transition to="cancelation" name="cancel"></transition>
+	</task-node>
+
+	<task-node name="reviewer">
+		<task name="reviewer">
+			<assignment actor-id="reviewer"></assignment>
+		</task>
+		<transition to="creator" name="reviewCreator"></transition>
+		<transition to="metadata_reviewed" name="accept"></transition>
+		<transition to="cancelation" name="cancel"></transition>
+	</task-node>
+
+	<task-node name="approver">
+		<task name="approver"></task>
+		<transition to="metadata_accepted" name="accept"></transition>
+		<transition to="cancelation" name="cancel"></transition>
+	</task-node>
+
+	<node name="cancelation">
+		<transition to="end-state"></transition>
+	</node>
+
+	<node name="metadata_accepted">
+		<transition to="end-state"></transition>
+	</node>
+
+	<node name="metadata_reviewed">
+		<transition to="approver"></transition>
+	</node>
+
+	<node name="metadata_created">
+		<transition to="reviewer"></transition>
+	</node>
+
+	<end-state name="end-state"></end-state>
+
+</process-definition>

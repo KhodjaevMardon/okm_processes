@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="Create Technical Document" width="1450" height="1083">
+  <node name="start-state1" x="-95" y="11" width="132" height="36">
+    <edge>
+      <label x="-23" y="-13"/>
+    </edge>
+  </node>
+  <node name="verifyDocument" x="128" y="8" width="132" height="36">
+    <edge>
+      <label x="-19" y="-13"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="codeRegistration" x="127" y="95" width="132" height="36">
+    <edge>
+      <label x="-53" y="-14"/>
+    </edge>
+  </node>
+  <node name="initialDownload" x="390" y="95" width="132" height="36">
+    <edge>
+      <label x="-109" y="-8"/>
+    </edge>
+  </node>
+  <node name="end" x="390" y="6" width="132" height="36"/>
+  <node name="uploadForReview" x="390" y="171" width="132" height="36">
+    <edge>
+      <label x="-41" y="-6"/>
+      <bendpoint w1="108" h1="40" w2="-129" h2="36"/>
+    </edge>
+  </node>
+  <node name="check checkout author" x="606" y="175" width="174" height="36">
+    <edge>
+      <label x="-43" y="-15"/>
+      <bendpoint w1="-138" h1="-41" w2="99" h2="-37"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="reviewerDownload" x="628" y="239" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="reviewerDecision" x="628" y="303" width="132" height="36">
+    <edge>
+      <label x="-17" y="-44"/>
+      <bendpoint w1="-50" h1="109" w2="115" h2="0"/>
+    </edge>
+    <edge>
+      <label x="-56" y="17"/>
+      <bendpoint w1="113" h1="-1" w2="-36" h2="-102"/>
+    </edge>
+  </node>
+  <node name="decision1" x="463" y="412" width="132" height="36">
+    <edge>
+      <label x="-75" y="11"/>
+    </edge>
+    <edge>
+      <label x="-41" y="28"/>
+      <bendpoint w1="49" h1="-110" w2="-116" h2="-1"/>
+    </edge>
+  </node>
+  <node name="downloadWithNotes" x="378" y="260" width="154" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="approverDownload" x="763" y="404" width="160" height="36">
+    <edge>
+      <label x="0" y="-9"/>
+    </edge>
+  </node>
+  <node name="ApproverDecision" x="764" y="470" width="158" height="36">
+    <edge>
+      <label x="-71" y="-14"/>
+      <bendpoint w1="-31" h1="79" w2="186" h2="-1"/>
+    </edge>
+    <edge>
+      <label x="-102" y="-14"/>
+      <bendpoint w1="218" h1="0" w2="-32" h2="-82"/>
+    </edge>
+    <edge>
+      <label x="4" y="-15"/>
+      <bendpoint w1="30" h1="80" w2="-143" h2="-2"/>
+    </edge>
+  </node>
+  <node name="decision2" x="560" y="550" width="132" height="36">
+    <edge>
+      <label x="-17" y="-14"/>
+      <bendpoint w1="27" h1="-81" w2="-190" h2="-1"/>
+    </edge>
+    <edge>
+      <label x="16" y="-14"/>
+      <bendpoint w1="-258" h1="-3" w2="-87" h2="287"/>
+    </edge>
+  </node>
+  <node name="singAndLock" x="1027" y="552" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="readyForIssuing" x="1026" y="624" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="decision3" x="1026" y="690" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="-45" y="-14"/>
+      <bendpoint w1="139" h1="-1" w2="-71" h2="-359"/>
+    </edge>
+  </node>
+  <node name="TranslationPart" x="1025" y="756" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="uploadTranslatedVersion" x="993" y="821" width="196" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state1" x="1221" y="1046" width="132" height="36"/>
+  <node name="Translated Version" x="1011" y="893" width="162" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Second Document" x="1019" y="972" width="148" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="19" h1="72" w2="-175" h2="-2"/>
+    </edge>
+  </node>
+  <deployment graphicalInfoFile="/workflow-course/src/main/jpdl/reviewCycle/.Create Technical Document.gpd.xml" imageFile="/workflow-course/src/main/jpdl/reviewCycle/Create Technical Document.jpg" serverName="localhost" serverPort="8080" serverDeployer="/jbpm-console/upload"/>
+</root-container>

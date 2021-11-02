@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="taskWorkflow" width="1152" height="620">
+  <node name="start-state" x="182" y="13" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="task-node-1" x="187" y="83" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="task-node-2" x="186" y="152" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state" x="188" y="230" width="132" height="36"/>
+  <deployment graphicalInfoFile="/workflows/src/main/jpdl/wf2/.taskWorkflow.gpd.xml" imageFile="/workflows/src/main/jpdl/wf2/taskWorkflow.jpg" serverName="localhost" serverPort="8080" serverDeployer="/OpenKM/workflow-register">
+    <additionalFiles>
+      <element value="/workflows/src/main/jpdl/wf2/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

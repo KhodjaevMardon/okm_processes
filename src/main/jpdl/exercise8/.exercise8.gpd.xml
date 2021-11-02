@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="exercise8" width="1138" height="639">
+  <node name="start-state" x="303" y="36" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="creator" x="118" y="116" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="188" h1="0" w2="0" h2="-52"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-89" h1="122" w2="-71" h2="-278"/>
+    </edge>
+  </node>
+  <node name="reviewer" x="299" y="244" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-187" h1="-4" w2="1" h2="48"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-185" h1="29" w2="17" h2="-59"/>
+    </edge>
+  </node>
+  <node name="approver" x="304" y="430" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="cancelation" x="100" y="516" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-1" h1="85" w2="-202" h2="-1"/>
+    </edge>
+  </node>
+  <node name="metadata_accepted" x="292" y="531" width="156" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="metadata_reviewed" x="299" y="343" width="144" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="metadata_created" x="427" y="145" width="145" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state" x="301" y="602" width="132" height="36"/>
+  <deployment graphicalInfoFile="/workflows/src/main/jpdl/exercise8/.exercise8.gpd.xml" imageFile="/workflows/src/main/jpdl/exercise8/exercise8.jpg" serverName="localhost" serverPort="8080" serverDeployer="/OpenKM/workflow-register">
+    <additionalFiles>
+      <element value="/workflows/src/main/jpdl/exercise8/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

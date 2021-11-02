@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="simple" width="1156" height="638">
+  <node name="start" x="150" y="25" width="140" height="40">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="node1" x="159" y="134" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="state1" x="339" y="80" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end" x="150" y="225" width="140" height="40"/>
+  <deployment graphicalInfoFile="/workflows/src/main/jpdl/simple/.simple.gpd.xml" imageFile="/workflows/src/main/jpdl/simple/simple.jpg" serverName="localhost" serverPort="8080" serverDeployer="/OpenKM/workflow-register"/>
+</root-container>

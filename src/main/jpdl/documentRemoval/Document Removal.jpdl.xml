@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="Document Removal">
+
+
+	<start-state name="start-state1">
+		<transition to="DocUUID Verification"></transition>
+		<event type="before-signal">
+			<action class="com.openkm.workflow.documentRemoval.AuthorInjection"></action>
+		</event>
+	</start-state>
+
+
+	<node name="Database check">
+		<transition to="join1"></transition>
+	</node>
+
+	<node name="File system check">
+		<transition to="join1"></transition>
+	</node>
+
+	<node name="Process Instance check">
+		<transition to="join1"></transition>
+	</node>
+
+	<decision name="IsEverythingOkay check">
+		<transition to="Removal process" name="to Removal Process"></transition>
+		<transition to="end" name="to end"></transition>
+	</decision>
+
+	<node name="Removal process">
+		<transition to="end-state1"></transition>
+	</node>
+
+	<task-node name="DocUUID Verification">
+		<task name="DocUUID Verification">
+			<assignment class="com.openkm.workflow.documentRemoval.AuthorAssignment"></assignment>
+		</task>
+		<transition to="fork1"></transition>
+	</task-node>
+
+	<fork name="fork1">
+		<transition to="Database check" name="to Database check"></transition>
+		<transition to="Process Instance check" name="to Process Instance check"></transition>
+		<transition to="File system check" name="to File system check"></transition>
+	</fork>
+
+	<join name="join1">
+		<transition to="IsEverythingOkay check"></transition>
+	</join>
+
+
+	<end-state name="end-state1"></end-state>
+
+	<end-state name="end"></end-state>
+
+
+</process-definition>

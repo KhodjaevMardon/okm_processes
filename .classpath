@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jBPM"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Tomcat"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.7.jar" sourcepath="/home/openkm/.m2/repository/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7-sources.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/openkm"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

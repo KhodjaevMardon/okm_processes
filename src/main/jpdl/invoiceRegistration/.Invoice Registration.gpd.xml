@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="Invoice Registration" width="1325" height="580">
+  <node name="start-state1" x="276" y="33" width="122" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Submit invoice&apos;s details" x="221" y="192" width="232" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="-21" y="-14"/>
+    </edge>
+  </node>
+  <node name="Set Invoice document&apos;s name" x="226" y="281" width="222" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Prepare the upload button" x="246" y="110" width="182" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Set Invoice document&apos;s Metadata" x="224" y="378" width="226" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="v3.6.0" x="271" y="467" width="132" height="36"/>
+  <node name="end-state2" x="504" y="216" width="22" height="32"/>
+  <deployment graphicalInfoFile="/Processes/src/main/jpdl/invoiceRegistration/.Invoice Registration.gpd.xml" imageFile="/Processes/src/main/jpdl/invoiceRegistration/Invoice Registration.jpg" serverName="localhost" serverPort="8080" serverDeployer="/jbpm-console/upload">
+    <classesAndResources>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/action/AuthorInjection.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/action/AuthorInjector.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/action/AuthorAssignment.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/invoiceRegistration/PrepareUpload.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/invoiceRegistration/SetDocumentName.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/invoiceRegistration/SetInvoiceMetadata.java"/>
+    </classesAndResources>
+    <additionalFiles>
+      <element value="/Processes/src/main/java/com/uzassystem/workflow/action/AuthorAssignment.java"/>
+      <element value="/Processes/src/main/jpdl/invoiceRegistration/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

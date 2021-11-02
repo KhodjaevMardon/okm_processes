@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="exercise7" width="1152" height="620">
+  <node name="start-state1" x="266" y="23" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="task-node1" x="267" y="111" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="task-node2" x="266" y="202" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state1" x="267" y="300" width="132" height="36"/>
+  <deployment graphicalInfoFile="/workflows/src/main/jpdl/exercise7/.exercise7.gpd.xml" imageFile="/workflows/src/main/jpdl/exercise7/exercise7.jpg" serverName="localhost" serverPort="8080" serverDeployer="/OpenKM/workflow-register">
+    <classesAndResources>
+      <element type="java" value="/workflows/src/main/java/com/openkm/workflow/exercise7/ActorAssigment.java"/>
+    </classesAndResources>
+    <additionalFiles>
+      <element value="/workflows/src/main/jpdl/exercise7/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

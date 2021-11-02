@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="Invoice Registration">
+
+
+	<start-state name="start-state1">
+		<transition to="Prepare the upload button"></transition>
+		<event type="before-signal">
+			<action class="com.uzassystem.workflow.action.AuthorInjection"></action>
+		</event>
+	</start-state>
+
+
+	<task-node name="Submit invoice's details">
+		<task name="Invoice Registration - Submit Invoice details and upload the Invoice">
+			<assignment class="com.uzassystem.workflow.action.AuthorAssignment"></assignment>
+		</task>
+		<transition to="Set Invoice document's name" name="to node1"></transition>
+		<transition to="end-state2" name="to end"></transition>
+	</task-node>
+
+	<node name="Set Invoice document's name">
+		<action class="com.uzassystem.workflow.invoiceRegistration.SetDocumentName"></action>
+		<transition to="Set Invoice document's Metadata"></transition>
+	</node>
+
+	<node name="Prepare the upload button">
+		<action class="com.uzassystem.workflow.invoiceRegistration.PrepareUpload"></action>
+		<transition to="Submit invoice's details"></transition>
+	</node>
+
+	<node name="Set Invoice document's Metadata">
+		<action class="com.uzassystem.workflow.invoiceRegistration.SetInvoiceMetadata"></action>
+		<transition to="v3.6.0"></transition>
+	</node>
+
+
+	<end-state name="v3.6.0"></end-state>
+
+	<end-state name="end-state2"></end-state>
+
+
+</process-definition>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="codeReservation" width="918" height="575">
+  <node name="start-state1" x="43" y="8" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="codeVerification" x="46" y="70" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="codeCorrection" x="364" y="75" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="codeRegistration" x="199" y="127" width="132" height="36">
+    <edge>
+      <label x="-43" y="-6"/>
+    </edge>
+  </node>
+  <node name="initialDownload" x="36" y="194" width="146" height="36">
+    <edge>
+      <label x="-57" y="-9"/>
+    </edge>
+  </node>
+  <node name="uploadForReview" x="338" y="199" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="reviewerDownload" x="333" y="274" width="132" height="36">
+    <edge>
+      <label x="-62" y="-3"/>
+    </edge>
+  </node>
+  <node name="approverDownload" x="659" y="358" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="downloadWithNotes" x="60" y="276" width="147" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="ApproverDecision" x="59" y="466" width="157" height="36">
+    <edge>
+      <label x="-60" y="-3"/>
+    </edge>
+    <edge>
+      <label x="-45" y="-12"/>
+    </edge>
+  </node>
+  <node name="signAndLock" x="402" y="466" width="132" height="36">
+    <edge>
+      <label x="-54" y="-10"/>
+    </edge>
+  </node>
+  <node name="readyForIssuing" x="686" y="466" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="ReviewerDecision" x="329" y="362" width="132" height="36">
+    <edge>
+      <label x="-57" y="-10"/>
+    </edge>
+    <edge>
+      <label x="-101" y="-8"/>
+    </edge>
+  </node>
+  <node name="end-state1" x="685" y="538" width="132" height="36"/>
+  <deployment graphicalInfoFile="/workflow-course/src/main/jpdl/code-reservation/.codeReservation.gpd.xml" imageFile="/workflow-course/src/main/jpdl/code-reservation/codeReservation.jpg" serverName="localhost" serverPort="8080" serverDeployer="/jbpm-console/upload">
+    <classesAndResources>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/RegisterCode.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/AuthorInjector.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/ShowCodeToControl.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/DownloadName.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/UpdateForReview.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/ReviewerDownload.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/ApproverDownload.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/UpdateForApproval.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/PrepareForSignAndLock.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/ReviewerFeedback.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/ApproverFeedback.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/TakeFeedbackIntoAccount.java"/>
+      <element type="java" value="/workflow-course/src/main/java/com/openkm/workflow/action/PrepareForSignAndLock.java"/>
+    </classesAndResources>
+    <additionalFiles>
+      <element value="/workflow-course/src/main/jpdl/code-reservation/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

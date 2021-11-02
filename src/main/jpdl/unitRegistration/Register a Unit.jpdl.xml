@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="Unit Registration">
+
+
+	<start-state name="start-state1">
+		<transition to="Unit Properties Verification">
+			<action class="com.openkm.workflow.unitRegistration.FillUserMessage"></action>
+		</transition>
+		<event type="before-signal">
+			<action class='com.openkm.workflow.unitRegistration.AuthorInjection'></action>
+		</event>
+	</start-state>
+
+
+	<task-node name="Unit Properties Verification">
+		<task name="Unit Properties Verification">
+			<assignment class="com.openkm.workflow.unitRegistration.AuthorAssignment"></assignment>
+		</task>
+		<transition to="v1.6.0" name="to end"></transition>
+		<transition to="Check And Register" name="to Check And Register"></transition>
+		<transition to="Check And Register" name="to CAR with Repeat">
+			<action class="com.openkm.workflow.unitRegistration.SetRepetition"></action>
+		</transition>
+	</task-node>
+
+	<node name="Check And Register">
+		<action class="com.openkm.workflow.unitRegistration.UnitRegistration"></action>
+		<transition to="RegistrationVerdict"></transition>
+	</node>
+
+	<decision name="RegistrationVerdict">
+		<handler class="com.openkm.workflow.unitRegistration.RegistrationVerdict"></handler>
+		<transition to="v1.6.0" name="to end"></transition>
+		<transition to="Unit Properties Verification" name="to Unit Properties Reverification"></transition>
+		<transition to="Unit Properties Verification" name="to New Unit Properties Verification">
+			<action class="com.openkm.workflow.unitRegistration.FillUserMessage"></action>
+		</transition>
+	</decision>
+
+
+	<end-state name="v1.6.0"></end-state>
+
+
+</process-definition>

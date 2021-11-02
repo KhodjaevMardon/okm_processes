@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="forkJoinWorkflow">
+
+
+	<start-state name="start-state">
+		<transition to="fork1"></transition>
+	</start-state>
+
+
+	<fork name="fork1">
+		<transition to="task-node-1" name="to task-node-1"></transition>
+		<transition to="task-node-2" name="to task-node-2"></transition>
+	</fork>
+
+	<task-node name="task-node-1">
+		<task name="task1">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="join1" name="accept"></transition>
+	</task-node>
+
+	<task-node name="task-node-2">
+		<task name="task2">
+			<assignment actor-id="josep"></assignment>
+		</task>
+		<transition to="join1" name="accept"></transition>
+	</task-node>
+
+	<join name="join1">
+		<transition to="end-state"></transition>
+	</join>
+
+
+	<end-state name="end-state"></end-state>
+
+
+</process-definition>

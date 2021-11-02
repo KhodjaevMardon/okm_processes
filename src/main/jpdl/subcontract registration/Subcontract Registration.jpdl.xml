@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="Subcontract Registration">
+
+
+	<start-state name="start-state1">
+		<transition to="node1"></transition>
+		<event type="before-signal">
+			<action class="com.uzassystem.workflow.subcontractRegistration.AuthorInjection"></action>
+		</event>
+	</start-state>
+
+
+	<node name="node1">
+		<action class="com.uzassystem.workflow.subcontractRegistration.RegisterSubcontract"></action>
+		<transition to="decision1"></transition>
+	</node>
+
+	<decision name="decision1">
+		<handler class="com.uzassystem.workflow.subcontractRegistration.SubcontractTypeCheck"></handler>
+		<transition to="upload Amendment" name="to upload Amendment"></transition>
+		<transition to="upload Subcontract" name="to upload Subcontract"></transition>
+		<transition to="upload Annex" name="to upload Annex"></transition>
+	</decision>
+
+	<task-node name="upload Amendment">
+		<task name="Upload Subcontract Amendment">
+			<assignment class="com.uzassystem.workflow.subcontractRegistration.AuthorAssignment"></assignment>
+		</task>
+		<transition to="register Metadata" name="to register with repeating">
+			<action class = "com.uzassystem.workflow.subcontractRegistration.SetRepetition"></action>
+		</transition>
+		<transition to="register Metadata" name="to register Metadata">
+			<action class = "com.uzassystem.workflow.subcontractRegistration.SetNoRepetition"></action>
+		</transition>
+		<transition to="endAmendment" name="to end"></transition>
+	</task-node>
+
+	<task-node name="upload Annex">
+		<task name="Upload Subcontract Annex">
+			<assignment class="com.uzassystem.workflow.subcontractRegistration.AuthorAssignment"></assignment>
+		</task>
+		<transition to="register Metadata" name="to register with repeating">
+			<action class = "com.uzassystem.workflow.subcontractRegistration.SetRepetition"></action>
+		</transition>
+		<transition to="register Metadata" name="to register Metadata">
+			<action class = "com.uzassystem.workflow.subcontractRegistration.SetNoRepetition"></action>
+		</transition>
+		<transition to="endAnnex" name="to end"></transition>
+	</task-node>
+
+	<task-node name="upload Subcontract">
+		<task name="Upload Subcontract">
+			<assignment class="com.uzassystem.workflow.subcontractRegistration.AuthorAssignment"></assignment>
+		</task>
+		<transition to="register Metadata" name="to register with repeating">
+			<action class = "com.uzassystem.workflow.subcontractRegistration.SetRepetition"></action>
+		</transition>
+		<transition to="register Metadata" name="to register Metadata">
+			<action class = "com.uzassystem.workflow.subcontractRegistration.SetNoRepetition"></action>
+		</transition>
+		<transition to="endSubcontract" name="to end"></transition>
+	</task-node>
+
+	<node name="register Metadata">
+		<action class="com.uzassystem.workflow.subcontractRegistration.SetSubcontractMetadata"></action>
+		<transition to="decision2"></transition>
+	</node>
+
+	<decision name="decision2">
+		<handler class="com.uzassystem.workflow.subcontractRegistration.CheckForRepeating"></handler>
+		<transition to="node1" name="repeat"></transition>
+		<transition to="v10.4.7 - prod" name="to end"></transition>
+	</decision>
+
+
+	<end-state name="v10.4.7 - prod"></end-state>
+
+	<end-state name="endSubcontract"></end-state>
+
+	<end-state name="endAnnex"></end-state>
+
+	<end-state name="endAmendment"></end-state>
+
+
+	<action></action>
+
+
+</process-definition>

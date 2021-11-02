@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+
+	<workflow-form task="run_config">
+		<select label="Unit Type" name="okp:databaseUnit.type" type="simple">
+			<option label="Document Type" value="DT" />
+			<option label="Document Category" value="DC" />
+			<option label="Client Name" value="CN" />
+		</select>
+	</workflow-form>
+
+	<workflow-form task="Unit Properties Verification">
+		<text data="userMessage" name="okp:sep" label="" />
+
+		<input name="okp:databaseUnit.code" label="Code"
+			data="databaseUnit.codeField">
+			<validator type="req" />
+		</input>
+		<input name="okp:databaseUnit.name" label="Name"
+			data="databaseUnit.nameField">
+			<validator type="req" />
+		</input>
+
+		<button transition="to Check And Register" name="to Check And Register"
+			label="Register and Close" />
+		<button transition="to CAR with Repeat" name="to CAR with Repeat"
+			label="Register and Repeat" />
+		<button transition="to end" name="to end" label="Close" style="no" validate = "false"/>
+
+	</workflow-form>
+
+</workflow-forms>

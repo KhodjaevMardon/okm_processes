@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="formWorkflow" width="1152" height="620">
+  <node name="start-state" x="223" y="14" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="task-node" x="223" y="80" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="decision" x="222" y="149" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state-1" x="105" y="220" width="132" height="36"/>
+  <node name="end-state-2" x="369" y="218" width="132" height="36"/>
+  <deployment graphicalInfoFile="/workflows/src/main/jpdl/wf1/.formWorkflow.gpd.xml" imageFile="/workflows/src/main/jpdl/wf1/formWorkflow.jpg" serverName="localhost" serverPort="8080" serverDeployer="/OpenKM/workflow-register">
+    <classesAndResources>
+      <element type="java" value="/workflows/src/main/java/com/openkm/workflow/action/Transaction1Action.java"/>
+      <element type="java" value="/workflows/src/main/java/com/openkm/workflow/action/Transaction2Action.java"/>
+      <element type="java" value="/workflows/src/main/java/com/openkm/workflow/decision/Decision1.java"/>
+    </classesAndResources>
+    <additionalFiles>
+      <element value="/workflows/src/main/jpdl/wf1/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

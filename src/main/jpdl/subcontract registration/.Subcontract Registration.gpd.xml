@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="Subcontract Registration" width="866" height="586">
+  <node name="start-state1" x="319" y="9" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="node1" x="319" y="70" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="decision1" x="319" y="132" width="132" height="36">
+    <edge>
+      <label x="-93" y="-4"/>
+      <bendpoint w1="-136" h1="51" w2="108" h2="-77"/>
+    </edge>
+    <edge>
+      <label x="-45" y="-21"/>
+      <bendpoint w1="195" h1="47" w2="-159" h2="-103"/>
+    </edge>
+    <edge>
+      <label x="-41" y="-8"/>
+    </edge>
+  </node>
+  <node name="upload Amendment" x="69" y="260" width="145" height="36">
+    <edge>
+      <label x="-92" y="-26"/>
+    </edge>
+    <edge>
+      <label x="-36" y="-3"/>
+      <bendpoint w1="-25" h1="122" w2="-233" h2="-76"/>
+    </edge>
+    <edge>
+      <label x="-24" y="-16"/>
+    </edge>
+  </node>
+  <node name="upload Annex" x="365" y="239" width="141" height="36">
+    <edge>
+      <label x="-56" y="-20"/>
+      <bendpoint w1="40" h1="82" w2="126" h2="-137"/>
+    </edge>
+    <edge>
+      <label x="-32" y="-35"/>
+      <bendpoint w1="-81" h1="120" w2="7" h2="-179"/>
+    </edge>
+    <edge>
+      <label x="-23" y="-11"/>
+    </edge>
+  </node>
+  <node name="upload Subcontract" x="647" y="282" width="148" height="36">
+    <edge>
+      <label x="-99" y="-10"/>
+      <bendpoint w1="-9" h1="81" w2="399" h2="-94"/>
+      <bendpoint w1="-69" h1="140" w2="339" h2="-35"/>
+      <bendpoint w1="-179" h1="171" w2="229" h2="-4"/>
+    </edge>
+    <edge>
+      <label x="-83" y="8"/>
+    </edge>
+    <edge>
+      <label x="-21" y="-7"/>
+    </edge>
+  </node>
+  <node name="register Metadata" x="283" y="458" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-102" h1="1" w2="18" h2="-61"/>
+    </edge>
+  </node>
+  <node name="decision2" x="164" y="543" width="132" height="36">
+    <edge>
+      <label x="88" y="212"/>
+      <bendpoint w1="-127" h1="-83" w2="-280" h2="399"/>
+      <bendpoint w1="-204" h1="-195" w2="-357" h2="287"/>
+      <bendpoint w1="-194" h1="-363" w2="-347" h2="119"/>
+      <bendpoint w1="-54" h1="-456" w2="-207" h2="26"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="v10.4.7 - prod" x="434" y="549" width="132" height="36"/>
+  <node name="endSubcontract" x="843" y="279" width="22" height="34"/>
+  <node name="endAnnex" x="565" y="249" width="22" height="32"/>
+  <node name="endAmendment" x="274" y="259" width="23" height="33"/>
+  <deployment graphicalInfoFile="/Processes/src/main/jpdl/subcontract registration/.Subcontract Registration.gpd.xml" imageFile="/Processes/src/main/jpdl/subcontract registration/Subcontract Registration.jpg" serverName="localhost" serverPort="8080" serverDeployer="/jbpm-console/upload">
+    <classesAndResources>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/AuthorAssignment.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/AuthorInjection.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/RegisterSubcontract.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/SubcontractTypeCheck.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/CheckForRepeating.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/SetNoRepetition.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/SetRepetition.java"/>
+      <element type="java" value="/Processes/src/main/java/com/uzassystem/workflow/subcontractRegistration/SetSubcontractMetadata.java"/>
+    </classesAndResources>
+    <additionalFiles>
+      <element value="/Processes/src/main/jpdl/subcontract registration/forms.xml"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

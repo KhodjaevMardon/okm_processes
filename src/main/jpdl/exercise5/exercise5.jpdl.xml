@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="exercise5">
+
+	<start-state name="start-state1">
+		<transition to="node1"></transition>
+	</start-state>
+
+	<node name="node1">
+		<action name="nodeaction" class="com.openkm.workflow.exercise.exercise5.NodeAction"></action>
+		<transition to="task-node1"></transition>
+	</node>
+
+	<task-node name="task-node1">
+		<task name="task">
+			<assignment actor-id="okmAdmin"></assignment>
+		</task>
+		<transition to="end-state1"></transition>
+	</task-node>
+
+	<end-state name="end-state1"></end-state>
+
+</process-definition>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="Contract Registration">
+
+
+	<start-state name="start-state1">
+		<transition to="node1"></transition>
+		<event type="before-signal">
+			<action class="com.uzassystem.workflow.action.AuthorInjection"></action>
+		</event>
+	</start-state>
+
+
+	<node name="node1">
+		<action class="com.uzassystem.workflow.action.RegisterContract"></action>
+		<transition to="decision1"></transition>
+	</node>
+
+	<decision name="decision1">
+		<handler class="com.uzassystem.workflow.decision.ContractTypeCheck"></handler>
+		<transition to="uploadContract" name="to uploadContract"></transition>
+		<transition to="uploadAmendment" name="to uploadAmendment"></transition>
+		<transition to="uploadAnnex" name="to uploadAnnex"></transition>
+	</decision>
+
+	<task-node name="uploadAnnex">
+		<task name="Upload ContractAnnex">
+			<assignment class="com.uzassystem.workflow.action.AuthorAssignment"></assignment>
+		</task>
+		<transition to="register metadata" name="to registerMetadata"></transition>
+		<transition to="register metadata" name="to registerWithRepeating">
+			<action class="com.uzassystem.workflow.action.SetVariableForRepeation"></action>
+		</transition>
+		<transition to="end-state1" name="to end"></transition>
+	</task-node>
+
+	<task-node name="uploadAmendment">
+		<task name="Upload Contract Amendment">
+			<assignment class="com.uzassystem.workflow.action.AuthorAssignment"></assignment>
+		</task>
+		<transition to="register metadata" name="to registerMetadata"></transition>
+		<transition to="register metadata" name="to registerWithRepeating">
+			<action class="com.uzassystem.workflow.action.SetVariableForRepeation"></action>
+		</transition>
+		<transition to="end-state2" name="to end"></transition>
+	</task-node>
+
+	<task-node name="uploadContract">
+		<task name="Upload Contract">
+			<assignment class="com.uzassystem.workflow.action.AuthorAssignment"></assignment>
+		</task>
+		<transition to="register metadata" name="to registerMetadata"></transition>
+		<transition to="register metadata" name="to registerWithRepeating">
+			<action class="com.uzassystem.workflow.action.SetVariableForRepeation"></action>
+		</transition>
+		<transition to="end-state3" name="to end"></transition>
+	</task-node>
+
+	<node name="register metadata">
+		<action class="com.uzassystem.workflow.action.SetContractMetadata"></action>
+		<transition to="decision2"></transition>
+	</node>
+
+	<decision name="decision2">
+		<handler class="com.uzassystem.workflow.decision.CheckForRepeating"></handler>
+		<transition to="v2.2.15 - prod" name="end"></transition>
+		<transition to="node1" name="repeat"></transition>
+	</decision>
+
+
+	<end-state name="v2.2.15 - prod"></end-state>
+
+	<end-state name="end-state1"></end-state>
+
+	<end-state name="end-state2"></end-state>
+
+	<end-state name="end-state3"></end-state>
+
+
+</process-definition>

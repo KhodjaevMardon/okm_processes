@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.6//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+
+<workflow-form task="run_config">
+<select label="Project Name" name="okp:codification.pro_tiagram" type="simple" table="pro_tiagram" optionsQuery="select $pro_tiagram_code, $pro_tiagram_name from DatabaseMetadataValue dmv where dmv.table='pro_tiagram'">
+<validator type="req"/>
+</select>
+<select label="Project Phase" name="okp:codification.pro_phase" type="simple" table="pro_phase" optionsQuery="select $pro_phase_code, $pro_phase_name from DatabaseMetadataValue dmv where dmv.table='pro_phase'">
+<validator type="req"/>
+</select>
+<select label="Discipline" name="okp:codification.discipline" type="simple" table="discipline" optionsQuery="select $discipline_code, $discipline_name from DatabaseMetadataValue dmv where dmv.table='discipline'">
+<validator type="req"/>
+</select>
+<select label="Document Type" name="okp:codification.doc_type" type="simple" table="doc_type" optionsQuery="select $doc_type_code, $doc_type_name from DatabaseMetadataValue dmv where dmv.table='doc_type'">
+<validator type="req"/>
+</select>
+<select label="Location" name="okp:codification.location" type="simple" table="location" optionsQuery="select $location_code, $location_name from DatabaseMetadataValue dmv where dmv.table='location'">
+<validator type="req"/>
+</select>
+<select label="Extention" name="fileExtension" type="simple">
+<option label = "Word" value="docx" />
+<option label = "Drawing" value="dwg" />
+<option label = "Excel" value="xlsx" />
+<validator type="req"/>
+</select>
+<select label="Reviewer Name" name="reviewerList" type="simple"  optionsQuery="select id, name from User">
+<validator type="req"/>
+</select>
+<select label="Approver Name" name="approverList" type="simple"  optionsQuery="select id, name from User">
+<validator type="req"/>
+</select>
+</workflow-form>
+
+<workflow-form task="Code verification">
+	<input name="codeToVerify" width="200px" label="Code to be Verified" type="text" data="codeToVerify" readonly="true" />
+    <button name="approve" label="Approve" transition="register" style="yes" />
+    <button name="correct" label="Correct Code" transition="correct" style="no" />
+</workflow-form>
+
+<workflow-form task="Initial Download">
+ 	<download name="initialDownload" label="Download Document" data="downloadFile"> 
+		<node label="download" /> 
+	</download>  
+    <button name="download" label="Proceed" transition="to upload for review" style="yes" />
+  </workflow-form>
+
+
+  <workflow-form task="reviewer download">
+ 	<download name="reviewerDownload" label="Download Document" data="downloadFile"> 
+ 		<node label="download" /> 
+ 	</download>
+    <button name="download" label="Download Document" transition="to reviewer decision" style="download" />
+  </workflow-form>
+  
+	<workflow-form task="reviewer decision">
+		<textarea label="Reviewer Decision" width="400px" name="reviewerNotes" />
+    	<button name="toAuthor" label="Send to Author for Modification" transition="to downloadWithNotes" style="no" />
+		<button name="toApprover" label="Send to Approver" transition="to approver download" style="yes" />
+	</workflow-form> 
+	
+	<workflow-form task="approver download">
+	<download name="approverDownload" label="Download Document" data="downloadFile"> 
+ 		<node label="download" /> 
+ 	</download>  
+    <button name="download" label="Download Document" transition="to approver decision" style="download" />
+  </workflow-form>
+
+	<workflow-form task="approver decision">
+		<textarea label="Approver Decision" width="400px" name="approverNotes" />
+    	<button name="toAuthor" label="Send to Author for Modification" transition="todownloadWithNotes" style="no" />
+		<button name="toSignandLock" label="Sign and Lock" transition="to signAndLock" style="yes" />
+	</workflow-form>  
+
+ <workflow-form task="download with notes">
+ 	<textarea label="Review Notes" width="400px" name="approverNotes" data="feedback"/>
+ 	<download name="downloadWithNotes" label="Download Document" data="downloadFile">
+ 		<node label="download" />
+ 	</download>
+    <button name="download" label="Download Document" transition="to upload for review" style="download" />
+  </workflow-form>
+  
+
+</workflow-forms>

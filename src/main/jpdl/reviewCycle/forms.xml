@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.4//EN"
+                                "http://www.openkm.com/dtd/workflow-forms-2.6.dtd">
+<workflow-forms>
+
+	<workflow-form task="run_config">
+		<select label="Document Type" name="okp:subcontract.type" type="simple">
+			<option label="Subcontract" value="CNT" />
+			<option label="Amendment" value="AMT" />
+			<option label="Annex" value="ANX" />
+		</select>
+
+	</workflow-form>
+
+</workflow-forms>
